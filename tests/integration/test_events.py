@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import smartsheet
 
 
+
 @pytest.mark.usefixtures("smart_setup")
 class TestEvents:
 
@@ -24,6 +25,8 @@ class TestEvents:
             assert event.request_user_id is not None
             # assert event.access_token_name is not None
             assert event.source.value is not None
+            if event.additional_details is not None:
+                assert isinstance(event.additional_details, dict)
 
         while events_list.more_available:
             events_list = smart.Events.list_events(stream_position=events_list.next_stream_position, max_count=10,
@@ -40,6 +43,8 @@ class TestEvents:
                 assert event.request_user_id is not None
                 # assert event.access_token_name is not None
                 assert event.source.value is not None
+                if event.additional_details is not None:
+                    assert isinstance(event.additional_details, dict)
 
     def test_invalid_params(self, smart_setup):
         smart = smart_setup['smart']

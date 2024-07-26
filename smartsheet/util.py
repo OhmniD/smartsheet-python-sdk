@@ -112,6 +112,14 @@ def serialize(obj):
                 serialized = serialize(item)
                 if not hasattr(serialized, "is_explicit_null"):
                     retval.append(serialized)
+
+    elif isinstance(obj, dict):
+        retval = {}
+        for key, value in obj.items():
+            serialized_value = serialize(value)
+            if not hasattr(serialized_value, "is_explicit_null"):
+                retval[key] = serialized_value
+
     else:
         retval = {}
         prop_list = get_child_properties(obj)
