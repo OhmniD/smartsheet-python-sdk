@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 import smartsheet
 
 
-
 @pytest.mark.usefixtures("smart_setup")
 class TestEvents:
 
