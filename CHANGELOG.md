@@ -9,8 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Changed `serialize` function to also handle dicts - this allows the Event Reporting API to 
+- Changed `serialize` function to also handle dicts - this allows the Event Reporting API to
   return the `additionalDetails` object correctly
+
+### Added
+
+- `to` parameter added for Event Reporting - allows setting an end timestamp for filtering for
+  events
 
 ## [3.0.3] - 2024-07-17
 
